@@ -75,7 +75,7 @@ class Controller():
         for kv in kvs:
             print('>> [Subscription listener] Received PUT : "{}"'.format(kv))
             v = kv[1].get_value().value
-            move(v)
+            self.move(v)
 
 
     def move(self, v):
