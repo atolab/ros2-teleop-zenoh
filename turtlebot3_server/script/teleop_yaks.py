@@ -63,7 +63,7 @@ class Controller():
         rclpy.init()
         self.qos = QoSProfile(depth=10)
         self.node = rclpy.create_node('teleop_yaks')
-        self.pub = self.node.create_publisher(Twist, 'cmd_vel', qos)
+        self.pub = self.node.create_publisher(Twist, 'cmd_vel', self.qos)
         self.running = False
         self.target_linear_velocity   = 0.0
         self.target_angular_velocity  = 0.0
