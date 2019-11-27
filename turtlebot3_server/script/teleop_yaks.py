@@ -147,7 +147,7 @@ class Controller():
         twist.angular.y = 0.0
         twist.angular.z = self.control_angular_velocity
 
-        pub.publish(twist)
+        self.pub.publish(twist)
 
 
 
