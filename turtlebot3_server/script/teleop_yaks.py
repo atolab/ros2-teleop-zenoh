@@ -93,11 +93,11 @@ class Controller():
 
 
     def fwd(self):
-        self.target_linear_velocity = check_linear_limit_velocity(self,target_linear_velocity + LIN_VEL_STEP_SIZE)
+        self.target_linear_velocity = check_linear_limit_velocity(self.target_linear_velocity + LIN_VEL_STEP_SIZE)
         self.send_vel()
 
     def bwd(self):
-        self.target_linear_velocity = check_linear_limit_velocity(self,target_linear_velocity - LIN_VEL_STEP_SIZE)
+        self.target_linear_velocity = check_linear_limit_velocity(self.target_linear_velocity - LIN_VEL_STEP_SIZE)
         self.send_vel()
 
     def halt(self):
@@ -131,7 +131,7 @@ class Controller():
 
         self.control_linear_velocity = make_simple_profile(
                     self.control_linear_velocity,
-                    self,target_linear_velocity,
+                    self.target_linear_velocity,
                     (LIN_VEL_STEP_SIZE/2.0))
 
         twist.linear.x = self.control_linear_velocity
