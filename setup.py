@@ -38,6 +38,7 @@ setup(
         'console_scripts': [
             # 'teleop_keyboard = turtlebot3_teleop.script.teleop_keyboard:main',
             'teleop_rest = turtlebot3_server.script.teleop_rest:main'
+            'teleop_yaks = turtlebot3_server.script.teleop_yaks:main'
         ],
     },
 )
