@@ -71,12 +71,11 @@ class Controller():
         self.control_angular_velocity = 0.0
 
 
-    def listener(self, changes):
-        for c in changes:
-            if c.get_kind() in [ChangeKind.PUT, ChangeKind.UPDATE]:
-                print('>> [Subscription listener] Received PUT on "{}": "{}"'
-                  .format(c.get_path(), c.get_value()))
-                v = c.get_value().value
+    def listener(self, kvs):
+        for kv in kvs:
+            print('>> [Subscription listener] Received PUT : "{}"'.format(kv))
+            v = kv[1].get_value().value
+            move(v)
 
 
     def move(self, v):
