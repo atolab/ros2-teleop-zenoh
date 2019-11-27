@@ -59,7 +59,7 @@ TURTLEBOT3_MODEL = "burger" #os.environ['TURTLEBOT3_MODEL']
 class Controller():
     def __init__(self, yaks):
         self.yaks = Yaks.login(yaks)
-        self.ws = self.yaks.Workspace('/')
+        self.ws = self.yaks.workspace('/')
         rclpy.init()
         self.qos = QoSProfile(depth=10)
         self.node = rclpy.create_node('teleop_yaks')
