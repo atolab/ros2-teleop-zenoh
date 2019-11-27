@@ -40,6 +40,7 @@ from rclpy.qos import QoSProfile
 from yaks import Yaks, Selector, Path, Workspace
 from yaks import Change, ChangeKind, Encoding, Value
 import time
+import json
 
 
 BURGER_MAX_LIN_VEL = 0.22
@@ -51,10 +52,10 @@ WAFFLE_MAX_ANG_VEL = 1.82
 LIN_VEL_STEP_SIZE = 0.01
 ANG_VEL_STEP_SIZE = 0.1
 
-TURTLEBOT3_MODEL = "burger" #os.environ['TURTLEBOT3_MODEL']
+TURTLEBOT3_MODEL = 'burger'
 
-
-
+CONTROL_RESOURCE = '/turtlebot/move'
+STATE_RESOURCE = '/turtlebot/status'
 
 class Controller():
     def __init__(self, yaks):
@@ -117,7 +118,7 @@ class Controller():
 
     def start(self):
         self.running = True
-        self.sid = self.ws.subscribe('/turtlebot/move', self.listener)
+        self.sid = self.ws.subscribe(CONTROL_RESOURCE, self.listener)
         while self.running:
             time.sleep(1)
 
@@ -148,6 +149,14 @@ class Controller():
         twist.angular.z = self.control_angular_velocity
 
         self.pub.publish(twist)
+        d = {
+        'target_linear_velocity': self.target_linear_velocity,
+        'target_angular_velocity': self.target_angular_velocity,
+        'control_linear_velocity': self.control_linear_velocity,
+        'control_angular_velocity': self.control_angular_velocity
+        }
+        js_state = json.dumps(d)
+        self.ws.put(CONTROL_RESOURCE, Value(js_state, Encoding.STRING))
 
 
 
