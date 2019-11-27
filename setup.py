@@ -4,7 +4,7 @@ import os
 from setuptools import find_packages
 from setuptools import setup
 
-package_name = 'turtlebot3_teleop'
+package_name = 'turtlebot3_server'
 
 setup(
     name=package_name,
@@ -36,8 +36,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'teleop_keyboard = turtlebot3_teleop.script.teleop_keyboard:main',
-            'teleop_rest = turtlebot3_teleop.script.teleop_rest:main'
+            # 'teleop_keyboard = turtlebot3_teleop.script.teleop_keyboard:main',
+            'teleop_rest = turtlebot3_server.script.teleop_rest:main'
         ],
     },
 )
