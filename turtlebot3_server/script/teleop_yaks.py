@@ -71,7 +71,7 @@ class Controller():
         self.control_angular_velocity = 0.0
 
 
-    def listener(changes):
+    def listener(self, changes):
         for c in changes:
             if c.get_kind() in [ChangeKind.PUT, ChangeKind.UPDATE]:
                 print('>> [Subscription listener] Received PUT on "{}": "{}"'
