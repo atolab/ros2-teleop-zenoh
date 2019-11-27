@@ -30,8 +30,8 @@
 import os
 import select
 import sys
-import termios
 import tty
+import signal
 
 from geometry_msgs.msg import Twist
 import rclpy
@@ -189,6 +189,16 @@ def check_angular_limit_velocity(velocity):
 
 def main():
     y = sys.argv[1]
+    c = Controller(y)
+
+    def sh(sig, frame):
+        c.stop()
+
+    signal.signal(signal.SIGINT, sh)
+
+    c.start()
+
+
 
 
 
