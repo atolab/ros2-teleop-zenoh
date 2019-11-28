@@ -11,6 +11,7 @@ from yaks import Yaks, Value, Encoding
 
 CONTROL_RESOURCE = '/turtlebot/move'
 STATE_RESOURCE = '/turtlebot/status'
+SENSOR_RESOURCE = '/turtlebot/sensors'
 
 app = Flask(__name__)
 
@@ -25,6 +26,15 @@ def reponse():
 @app.route('/', methods=['GET'])
 def index():
     return reponse()
+
+@app.route('/sensors', methods=['GET'])
+def sensors():
+    res = ws.get(SENSOR_RESOURCE)
+    print(res)
+    if len(res) > 0:
+        v = res[0][1].value
+        return v
+    return ""
 
 @app.route('/fwd', methods=['POST'])
 def fwd():
