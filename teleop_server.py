@@ -19,7 +19,7 @@ def reponse():
     print(res)
     if len(res) > 0:
         v = res[0][1].value
-        return
+        return v
     return ""
 
 @app.route('/', methods=['GET'])
