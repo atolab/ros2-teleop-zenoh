@@ -49,7 +49,7 @@ BURGER_MAX_ANG_VEL = 2.84
 WAFFLE_MAX_LIN_VEL = 0.26
 WAFFLE_MAX_ANG_VEL = 1.82
 
-LIN_VEL_STEP_SIZE = 0.11
+LIN_VEL_STEP_SIZE = 0.22
 ANG_VEL_STEP_SIZE = 0.71
 
 TURTLEBOT3_MODEL = 'burger'
@@ -119,6 +119,7 @@ class Controller():
     def start(self):
         self.running = True
         self.sid = self.ws.subscribe(CONTROL_RESOURCE, self.listener)
+        self.send_vel()
         while self.running:
             time.sleep(1)
 
