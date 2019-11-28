@@ -156,7 +156,7 @@ class Controller():
         'control_angular_velocity': self.control_angular_velocity
         }
         js_state = json.dumps(d)
-        self.ws.put(CONTROL_RESOURCE, Value(js_state, Encoding.STRING))
+        self.ws.put(STATE_RESOURCE, Value(js_state, Encoding.STRING))
 
 
 
