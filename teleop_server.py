@@ -23,6 +23,7 @@ def reponse():
     print(res)
     if len(res) > 0:
         v = res[0][1].value
+
         return v
     return ""
 
@@ -38,7 +39,12 @@ def sensors():
     print(res)
     if len(res) > 0:
         v = res[0][1].value
-        return v
+        d = json.loads(v)
+        r = reponse()
+        if r != "":
+            d2 = json.loads(r)
+            d.update(d2)
+        return json.dumps(d)
     return ""
 
 @app.route('/fwd', methods=['POST'])
