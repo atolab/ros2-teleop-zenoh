@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  	<meta name="description" content="">
+  	<meta name="author" content="">
+  	<title>fog05 demonstration - ECW</title>
+  	<!-- Bootstrap core CSS-->
+  	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  	<!-- Custom fonts for this template-->
+  	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  	<!-- Custom styles for this template-->
+  	<link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="robot.html">Turtlebot3 dashboard</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="robot.html">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Command center</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">    <div class="container-fluid">
+    	<div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-6">
+            <div class="card mb-3">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col-12">
+                    <i class="fa fa-gear"></i> <strong>Robot control</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body"></div>
+              <div class="card-body" id="robot_arrow">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-4"></div>
+                      <div class="col-4">
+                        <button id="arrow-up" type="button" class="btn btn-outline-dark btn-lg btn-block"><i class="fa fa-arrow-up"></i></button>
+                      </div>
+                      <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <button id="arrow-left" type="button" class="btn btn-outline-dark btn-lg btn-block"><i class="fa fa-arrow-left"></i></button>
+                      </div>
+                      <div class="col-4"></div>
+                      <div class="col-4">
+                        <button id="arrow-right" type="button" class="btn btn-outline-dark btn-lg btn-block"><i class="fa fa-arrow-right"></i></button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4"></div>
+                      <div class="col-4">
+                        <button id="arrow-down" type="button" class="btn btn-outline-dark btn-lg btn-block"><i class="fa fa-arrow-down"></i></button>
+                      </div>
+                      <div class="col-4"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body"></div>
+            </div>
+          </div>
+        <div class="col-xs-12 col-md-12 col-lg-6" id="robot_cards">
+          <div class="row"> 
+            <div class="col-xs-12 col-md-12 col-lg-6">
+              <div class="card mb-3" id="card-proximity">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col-12">
+                      <i class="fa fa-arrows"></i> <strong>Proximity</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-12 text-center">
+                      <h2><span id="proximity">NA</span><span> cm</span></h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-12 col-lg-6">
+              <div class="card mb-3" id="card-speed">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col-12">
+                      <i class="fa fa-dashboard"></i> <strong>Speed</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-6 text-center"><h2><span id="speed-linear">NA</span><span> m/s</span></h2></div>
+                    <div class="col-6 text-center"><h2><span id="speed-angular">NA</span><span> rad/s</span></h2></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card mb-3" id="card-temperature">
+                <div class="card-header">
+                  <div class="row align-items-center">   
+                    <div class="col-12">
+                      <i class="fa fa-thermometer-half"></i> <strong>Temperature</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-12 text-center"><h2><span id="temperature">NA</span><span>°C</span></h2></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+                <div class="card mb-3" id="card-humidty">
+                  <div class="card-header">
+                    <div class="row align-items-center">  
+                      <div class="col-12">
+                        <i class="fa fa-tint"></i> <strong>Humidity</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-12 text-center"><h2><span id="humidity">NA</span><span>%</span></h2></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="col-4">
+              <div class="card mb-3" id="card-air-quality">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col-12">
+                      <i class="fa fa-heartbeat"></i> <strong>Air quality</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-12 text-center">
+                        <h2><span id="air-quality">NA</span></h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <script src="js/robot-global.js"></script>
+    <script src="js/robot-control.js"></script>
+    <script src="js/robot-refresh.js"></script>
+  </div>
+  <!-- /.content-wrapper--><footer class="sticky-footer">
+  <div class="container-fluid">
+    <div class="row text-center align-items-center">
+      <div class="col-3">
+        <img src="atolab.png" height="40px">
+      </div>
+      <div class="col-3">
+        <img src="fog05.png" height="40px">
+      </div>
+      <div class="col-3">
+        <img src="eclipse.png" height="55px">
+     </div>
+      <div class="col-3">
+        <img src="5g-dive.png" height="40px">
+     </div>
+    </div>
+  </div>
+</footer>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fa fa-angle-up"></i>
+</a>
+<!-- Logout Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="login.html">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

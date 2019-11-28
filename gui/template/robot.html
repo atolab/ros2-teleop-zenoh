@@ -1,0 +1,141 @@
+    <div class="container-fluid">
+    	<div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-6">
+            <div class="card mb-3">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col-12">
+                    <i class="fa fa-gear"></i> <strong>Robot control</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body"></div>
+              <div class="card-body" id="robot_arrow">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-4"></div>
+                      <div class="col-4">
+                        <button id="arrow-up" type="button" class="btn btn-outline-dark btn-lg btn-block"><i class="fa fa-arrow-up"></i></button>
+                      </div>
+                      <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <button id="arrow-left" type="button" class="btn btn-outline-dark btn-lg btn-block"><i class="fa fa-arrow-left"></i></button>
+                      </div>
+                      <div class="col-4"></div>
+                      <div class="col-4">
+                        <button id="arrow-right" type="button" class="btn btn-outline-dark btn-lg btn-block"><i class="fa fa-arrow-right"></i></button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4"></div>
+                      <div class="col-4">
+                        <button id="arrow-down" type="button" class="btn btn-outline-dark btn-lg btn-block"><i class="fa fa-arrow-down"></i></button>
+                      </div>
+                      <div class="col-4"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body"></div>
+            </div>
+          </div>
+        <div class="col-xs-12 col-md-12 col-lg-6" id="robot_cards">
+          <div class="row"> 
+            <div class="col-xs-12 col-md-12 col-lg-6">
+              <div class="card mb-3" id="card-proximity">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col-12">
+                      <i class="fa fa-arrows"></i> <strong>Proximity</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-12 text-center">
+                      <h2><span id="proximity">NA</span><span> cm</span></h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-12 col-lg-6">
+              <div class="card mb-3" id="card-speed">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col-12">
+                      <i class="fa fa-dashboard"></i> <strong>Speed</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-6 text-center"><h2><span id="speed-linear">NA</span><span> m/s</span></h2></div>
+                    <div class="col-6 text-center"><h2><span id="speed-angular">NA</span><span> rad/s</span></h2></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card mb-3" id="card-temperature">
+                <div class="card-header">
+                  <div class="row align-items-center">   
+                    <div class="col-12">
+                      <i class="fa fa-thermometer-half"></i> <strong>Temperature</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-12 text-center"><h2><span id="temperature">NA</span><span>°C</span></h2></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+                <div class="card mb-3" id="card-humidty">
+                  <div class="card-header">
+                    <div class="row align-items-center">  
+                      <div class="col-12">
+                        <i class="fa fa-tint"></i> <strong>Humidity</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-12 text-center"><h2><span id="humidity">NA</span><span>%</span></h2></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="col-4">
+              <div class="card mb-3" id="card-air-quality">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col-12">
+                      <i class="fa fa-heartbeat"></i> <strong>Air quality</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-12 text-center">
+                        <h2><span id="air-quality">NA</span></h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <script src="js/robot-global.js"></script>
+    <script src="js/robot-control.js"></script>
+    <script src="js/robot-refresh.js"></script>
+  </div>
+  <!-- /.content-wrapper-->
