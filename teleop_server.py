@@ -6,6 +6,7 @@ import sys
 
 import json
 from flask import Flask
+from flask_cors import CORS, cross_origin
 from yaks import Yaks, Value, Encoding
 
 
@@ -14,6 +15,8 @@ STATE_RESOURCE = '/turtlebot/status'
 SENSOR_RESOURCE = '/turtlebot/sensors'
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 def reponse():
     res = ws.get(STATE_RESOURCE)
@@ -24,10 +27,12 @@ def reponse():
     return ""
 
 @app.route('/', methods=['GET'])
+@cross_origin()
 def index():
     return reponse()
 
 @app.route('/sensors', methods=['GET'])
+@cross_origin()
 def sensors():
     res = ws.get(SENSOR_RESOURCE)
     print(res)
@@ -37,6 +42,7 @@ def sensors():
     return ""
 
 @app.route('/fwd', methods=['POST'])
+@cross_origin()
 def fwd():
     v = Value('fwd', Encoding.STRING)
     ws.put(CONTROL_RESOURCE, v)
@@ -44,24 +50,28 @@ def fwd():
 
 
 @app.route('/bwd', methods=['POST'])
+@cross_origin()
 def bwd():
     v = Value('bwd', Encoding.STRING)
     ws.put(CONTROL_RESOURCE, v)
     return reponse()
 
 @app.route('/stop', methods=['POST'])
+@cross_origin()
 def stop():
     v = Value('h', Encoding.STRING)
     ws.put(CONTROL_RESOURCE, v)
     return reponse()
 
 @app.route('/sx', methods=['POST'])
+@cross_origin()
 def sx():
     v = Value('sx', Encoding.STRING)
     ws.put(CONTROL_RESOURCE, v)
     return reponse()
 
 @app.route('/dx', methods=['POST'])
+@cross_origin()
 def dx():
     v = Value('dx', Encoding.STRING)
     ws.put(CONTROL_RESOURCE, v)
