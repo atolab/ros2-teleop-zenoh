@@ -1,4 +1,4 @@
-$( "#arrow-up" ).mousedown(function() {
+$( "#arrow-up" ).on("mousedown", "touchend", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/fwd"),
@@ -8,7 +8,7 @@ $( "#arrow-up" ).mousedown(function() {
   });
 });
 
-$( "#arrow-up" ).mouseup(function() {
+$( "#arrow-up" ).on("mouseup", "touchstart", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/stop"),
@@ -18,7 +18,7 @@ $( "#arrow-up" ).mouseup(function() {
   });
 });
 
-$( "#arrow-left" ).mousedown(function() {
+$( "#arrow-left" ).on("mousedown", "touchend", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/sx"),
@@ -28,7 +28,7 @@ $( "#arrow-left" ).mousedown(function() {
   });
 });
 
-$( "#arrow-left" ).mouseup(function() {
+$( "#arrow-left" ).on("mouseup", "touchstart", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/stop"),
@@ -38,7 +38,7 @@ $( "#arrow-left" ).mouseup(function() {
   });
 });
 
-$( "#arrow-right" ).mousedown(function() {
+$( "#arrow-right" ).on("mousedown", "touchend", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/dx"),
@@ -48,7 +48,7 @@ $( "#arrow-right" ).mousedown(function() {
   });
 });
 
-$( "#arrow-right" ).mouseup(function() {
+$( "#arrow-right" ).on("mouseup", "touchstart", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/stop"),
@@ -58,7 +58,7 @@ $( "#arrow-right" ).mouseup(function() {
   });
 });
 
-$( "#arrow-down" ).mousedown(function() {
+$( "#arrow-down" ).on("mousedown", "touchend", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/bwd"),
@@ -68,7 +68,7 @@ $( "#arrow-down" ).mousedown(function() {
   });
 });
 
-$( "#arrow-down" ).mouseup(function() {
+$( "#arrow-down" ).on("mouseup", "touchstart", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/stop"),
