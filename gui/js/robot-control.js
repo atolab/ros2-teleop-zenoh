@@ -1,4 +1,14 @@
-$( "#arrow-up" ).on("mousedown", "touchend", function() {
+// $( "#arrow-up" ).mousedown(function() {
+//   $.ajax({
+//     type: "POST",
+//     url: global_url.concat("/fwd"),
+//     dataType: "json",
+//     data: {}
+//   }).done(function(data) {
+//   });
+// });
+
+$( "#arrow-up" ).bind("mousedown touchstart", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/fwd"),
@@ -8,7 +18,7 @@ $( "#arrow-up" ).on("mousedown", "touchend", function() {
   });
 });
 
-$( "#arrow-up" ).on("mouseup", "touchstart", function() {
+$( "#arrow-up" ).bind("mouseup touchend", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/stop"),
@@ -18,7 +28,7 @@ $( "#arrow-up" ).on("mouseup", "touchstart", function() {
   });
 });
 
-$( "#arrow-left" ).on("mousedown", "touchend", function() {
+$( "#arrow-left" ).bind("mousedown touchstart", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/sx"),
@@ -28,7 +38,7 @@ $( "#arrow-left" ).on("mousedown", "touchend", function() {
   });
 });
 
-$( "#arrow-left" ).on("mouseup", "touchstart", function() {
+$( "#arrow-left" ).bind("mouseup touchend", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/stop"),
@@ -38,7 +48,7 @@ $( "#arrow-left" ).on("mouseup", "touchstart", function() {
   });
 });
 
-$( "#arrow-right" ).on("mousedown", "touchend", function() {
+$( "#arrow-right" ).bind("mousedown touchstart", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/dx"),
@@ -48,7 +58,7 @@ $( "#arrow-right" ).on("mousedown", "touchend", function() {
   });
 });
 
-$( "#arrow-right" ).on("mouseup", "touchstart", function() {
+$( "#arrow-right" ).bind("mouseup touchend", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/stop"),
@@ -58,7 +68,7 @@ $( "#arrow-right" ).on("mouseup", "touchstart", function() {
   });
 });
 
-$( "#arrow-down" ).on("mousedown", "touchend", function() {
+$( "#arrow-down" ).bind("mousedown touchstart", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/bwd"),
@@ -68,7 +78,7 @@ $( "#arrow-down" ).on("mousedown", "touchend", function() {
   });
 });
 
-$( "#arrow-down" ).on("mouseup", "touchstart", function() {
+$( "#arrow-down" ).bind("mouseup touchend", function() {
   $.ajax({
     type: "POST",
     url: global_url.concat("/stop"),
