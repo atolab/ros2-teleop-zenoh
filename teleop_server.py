@@ -35,17 +35,7 @@ def index():
 @app.route('/sensors', methods=['GET'])
 @cross_origin()
 def sensors():
-    res = ws.get(SENSOR_RESOURCE)
-    print(res)
-    if len(res) > 0:
-        v = res[0][1].value
-        d = json.loads(v)
-        r = reponse()
-        if r != "":
-            d2 = json.loads(r)
-            d.update(d2)
-        return json.dumps(d)
-    return ""
+    return reponse()
 
 @app.route('/fwd', methods=['POST'])
 @cross_origin()
