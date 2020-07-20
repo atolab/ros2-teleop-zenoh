@@ -3,7 +3,7 @@ FROM ubuntu:bionic
 LABEL authors="Gabriele Baldoni"
 
 RUN apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install libev4 libssl1.1
+    DEBIAN_FRONTEND=noninteractive apt-get -y install libev4 libssl1.1 curl
 COPY zenohd /root/zenohd
 COPY yaks-plugin.cmxs /root/yaks-plugin.cmxs
 
