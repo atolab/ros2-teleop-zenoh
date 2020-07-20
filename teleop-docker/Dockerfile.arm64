@@ -7,7 +7,7 @@ RUN apt-get update -qq && \
 RUN pip3 install flask zenoh==0.3.0 yaks==0.3.0.post1
 RUN curl -Lo /tmp/zenoh.deb https://github.com/eclipse-fog05/fog05/releases/download/v0.1.0/libzenoh-0.3.0-ubuntu-arm64.deb
 RUN dpkg -i  /tmp/zenoh.deb
-COPY ../teleop_server.py /root/server.py
+COPY ./teleop_server.py /root/server.py
 
 
 #RUN cd /root/ && curl ... && dpkg -i zenoh.deb
