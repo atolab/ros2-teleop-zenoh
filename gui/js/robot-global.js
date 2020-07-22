@@ -13,4 +13,4 @@ var color = {
 var global_refresh = 250;
 var global_robot = {};
 
-var global_url = "http://192.168.1.26:5000";
+var global_url = "http://172.16.123.10:5000";
