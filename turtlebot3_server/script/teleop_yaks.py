@@ -22,8 +22,7 @@ from geometry_msgs.msg import Twist
 import rclpy
 from rclpy.qos import QoSProfile
 
-from yaks import Yaks, Selector, Path, Workspace
-from yaks import Change, ChangeKind, Encoding, Value
+from zenoh import Zenoh
 import time
 import json
 
@@ -43,9 +42,9 @@ CONTROL_RESOURCE = '/turtlebot/move'
 STATE_RESOURCE = '/turtlebot/status'
 
 class Controller():
-    def __init__(self, yaks):
-        self.yaks = Yaks.login(yaks)
-        self.ws = self.yaks.workspace('/')
+    def __init__(self, locator):
+        self.zenoh = Zenoh({'mode':'client','peer':locator})
+        self.ws = self.zenoh.workspace()
         rclpy.init()
         self.qos = QoSProfile(depth=10)
         self.node = rclpy.create_node('teleop_yaks')
