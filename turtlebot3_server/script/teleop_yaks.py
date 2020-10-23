@@ -22,7 +22,7 @@ from geometry_msgs.msg import Twist
 import rclpy
 from rclpy.qos import QoSProfile
 
-from zenoh import Zenoh
+from zenoh import Zenoh, Value
 import time
 import json
 
@@ -56,25 +56,27 @@ class Controller():
         self.control_angular_velocity = 0.0
 
 
-    def listener(self, kvs):
-        for kv in kvs:
-            print('>> [Subscription listener] Received PUT : "{}"'.format(kv))
-            v = kv.get_value().get_value()
-            self.move(v)
+    def listener(self, change):
+        print('>> [Subscription listener] Received PUT : "{}"'.format(change))
+        v = json.loads(change.value.get_content())
+        self.move(v)
 
 
     def move(self, v):
-        d = {
-            'fwd':self.fwd,
-            'bwd':self.bwd,
-            'h':self.halt,
-            'sx':self.sx,
-            'dx':self.dx
-        }
-        f = d.get(v, None)
-        if f is not None:
-            f()
-
+        print('>> Move data is {}"'.format(v))
+        # d = {
+        #     'fwd':self.fwd,
+        #     'bwd':self.bwd,
+        #     'h':self.halt,
+        #     'sx':self.sx,
+        #     'dx':self.dx
+        # }
+        # f = d.get(v, None)
+        # if f is not None:
+        #     f()
+        self.target_angular_velocity = v['control_angular_velocity']
+        self.target_linear_velocity = v['control_linear_velocity']
+        self.send_vel()
 
 
     def fwd(self):
@@ -141,7 +143,7 @@ class Controller():
         'control_angular_velocity': self.control_angular_velocity
         }
         js_state = json.dumps(d)
-        self.ws.put(STATE_RESOURCE, Value(js_state, Encoding.STRING))
+        self.ws.put(STATE_RESOURCE, Value.Json(js_state))
 
 
 
